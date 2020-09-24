@@ -10,13 +10,18 @@ namespace BergerApp
     {
         static void Main(string[] args)
         {
-            Console.ReadLine();
-            Console.ReadLine();
+            double m = 0;
+            Console.WriteLine("Geben Sie die Länge des Informationsvektors ein.");
+            m = Convert.ToDouble(Console.ReadLine());
+            ClassicBergerGenerate(m);
         }
 
-        static void ClassicBergerGenerate()
+        static void ClassicBergerGenerate(double m)
         {
-            
+            double k = 0;
+            k = Math.Ceiling(Math.Log(m+1,2));
+            Console.WriteLine("Вид S(n,m)-кода Бергера: S({0},{1})", k + m, m);
+            Console.ReadLine();
         }
     }
 }
