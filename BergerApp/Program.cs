@@ -17,7 +17,7 @@ namespace BergerApp
             //Console.WriteLine("Geben Sie die Länge des Informationsvektors ein.");
             // Die maximale Bitrate von Bergers klassischem Code.
             //double m = Convert.ToDouble(Console.ReadLine());
-            int m = 2;
+            int m = 3;
             // Das Arbeitsbuch
             ExcelWorkbookGenerate(m);
         }
