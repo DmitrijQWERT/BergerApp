@@ -21,13 +21,10 @@ namespace BergerApp
             // Das Arbeitsbuch
             ExcelWorkbookGenerate(m);
         }
-        //static double ClassicBergerGenerate(int m)
-        //{
-        //    double k = Math.Ceiling(Math.Log(m + 1, 2));
-        //    //Console.WriteLine("Вид S(n,m)-кода Бергера: S({0},{1})", k + m, m);
-        //    //Console.ReadLine();
-        //    return k;
-        //}
+        /// <summary>
+        /// Создание рабочей книги Excel с рассматриваемыми кодами
+        /// </summary>
+        /// <param name="m">Разрядность информационного вектора</param>
         static void ExcelWorkbookGenerate(int m)
         {
             IWorkbook workbook = new XSSFWorkbook();
@@ -172,55 +169,6 @@ namespace BergerApp
                  EntstellungString += Entstellung + " ";
                 rowTabel.CreateCell(m + k + i).SetCellValue(EntstellungString);
             }
-            /*int AusGangVariableX = 0;
-            int EntstellungKombination = 0;
-            for (int i = 1; i <= m; i++) // кратность ошибки
-            {
-                int SchrittX0 = Convert.ToInt32(((Kombination & 1) << m)| Kombination);
-                int Maske = Convert.ToInt32(Math.Pow(2, i)) - 1;
-                int EinsMaske = Convert.ToInt32(Math.Pow(2, m)) - 1;
-                int EinsMaskeX0 = Convert.ToInt32(Math.Pow(2, m)) - 2;
-                string EntstellungString = " ";
-                int rEntst = 0;
-                int Entstellung = 0;
-                for (int j = 1; j <= m; j++) // поэлементная проверка
-                {
-                    if ((i == 1) || j != 1)
-                    {
-                        EntstellungKombination = 0;
-                        EntstellungKombination = Kombination ^ (Maske << m - j);
-                        rEntst = 0;
-                        for (int l = 1; l <= m; l++)//Определение веса
-                        {
-                            AusGangVariableX = (EntstellungKombination >> (m - l)) & 1;
-                            rEntst = AusGangVariableX == 1 ? (rEntst + 1) : (rEntst + 0);
-                        }
-                    }
-                    else if (i !=1 & j == 1)
-                    {
-                        EntstellungKombination = 0;
-                        EntstellungKombination = SchrittX0 ^ (Maske << m - j);
-                        EntstellungKombination = ((EntstellungKombination >> m) | ((EinsMaske & EntstellungKombination) & EinsMaskeX0));
-                        rEntst = 0;
-                        for (int l = 1; l <= m; l++)//Определение веса
-                        {
-                            AusGangVariableX = (EntstellungKombination >> (m - l)) & 1;
-                            rEntst = AusGangVariableX == 1 ? (rEntst + 1) : (rEntst + 0);
-                        }                       
-                    }
-                    if (rEntst == r)
-                    {
-                        if ((m == 2) & (j == 2))
-                        {
-                            continue;
-                        }
-                        EntstellungString += Convert.ToString(EntstellungKombination, 2) + " ";
-                        Entstellung++;
-                    }
-                }
-                EntstellungString += Entstellung + " ";
-                rowTabel.CreateCell(m + k + i).SetCellValue(EntstellungString);
-            }*/
         }
         static int[,] Kombinationen(int KodLen, int LenErr, int[] Maske)
         {
